@@ -1,0 +1,20 @@
+<Page ux:Class="SecondPage">
+	<Router ux:Dependency="router"/>
+
+	<JavaScript>
+		function gotoBack(){
+			router.goto("homepage");
+		}
+
+		module.exports ={
+			gotoBack:gotoBack
+		};
+	</JavaScript>
+
+	<Grid Background="Red" ColumnCount="2">
+		<Text Alignment="Center" TextColor="White">SecondPage</Text>
+		<Button Alignment="Center" Text="Go Back" Padding="10" Clicked="{gotoBack}">
+			<Rectangle Layer="Background" Width="120" CornerRadius="7" Color="White"/>
+		</Button>
+	</Grid>
+</Page>

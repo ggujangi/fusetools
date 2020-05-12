@@ -1,0 +1,19 @@
+<Page ux:Class="HomePage">
+	<Router ux:Dependency="router"/>
+	<JavaScript>
+		function gotoSecond(){
+			router.goto("secondpage");
+		}
+
+		module.exports = {
+			gotoSecond:gotoSecond
+		};
+	</JavaScript>
+	
+	<Grid Background="Blue" ColumnCount="2">
+		<Text Alignment="Center" TextColor="White">HomePage</Text>
+		<Button Alignment="Center" Text="Goto Second" Padding="10" Clicked="{gotoSecond}">
+			<Rectangle Layer="Background" Width="120" CornerRadius="7" Color="White"/>
+		</Button>
+	</Grid>
+</Page>

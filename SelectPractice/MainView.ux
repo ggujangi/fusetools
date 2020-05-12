@@ -1,0 +1,9 @@
+<App Background="#f8ecc9">
+	<JavaScript>
+		var Observable = require("FuseJS/Observable");
+		var options = ["ONE", "TWO", "THREE"];
+		var selected = Observable("THREE");
+		module.exports = {options, selected};
+	</JavaScript>
+	<SegmentBar Options = "{options}" Selected="{selected}"/>
+</App>

@@ -1,0 +1,24 @@
+<App>
+	<iOS.StatusBarConfig Style="Light" />
+	<Android.StatusBarConfig Color="#EE7785"/>
+
+	<Router ux:Name="router"/>
+
+	<DockPanel>
+		<StatusBarBackground Dock="Top" Background="#EE7785"/>
+		<BottomBarBackground Dock="Bottom"/>
+		
+		<Navigator DefaultPath="homepage">
+			<HomePage ux:Template="homepage" router="router">
+				<Transition Direction="ToActive">
+					<Move X="-1"  RelativeTo="ParentSize" Duration=".5"/>
+				</Transition>
+			</HomePage>
+			<SecondPage ux:Template="secondpage" router="router">
+				<Transition>
+					<Move Y="-1" RelativeTo="ParentSize" Duration=".5"/>
+				</Transition>
+			</SecondPage>
+		</Navigator>
+	</DockPanel>
+</App>

@@ -1,0 +1,49 @@
+<App>
+	<DockPanel>
+		<Panel ux:Name="panelColor" Color="#ffc952" Margin="20, 0, 20, 20">
+			<Rectangle Layer="Background" CornerRadius="4">
+				<Stroke Width="1" Color="Black"/>
+				<Text ux:Name="text1" Alignment="Center" Color="White">First</Text>
+			</Rectangle>
+		</Panel>
+	    <Panel Dock="Top" Alignment="Top" Width="100%" Height="50" Margin="0, 20, 0, 0" >
+		    <MultiLayoutPanel ux:Name="multiLayout">
+		        <Grid ColumnCount="3">
+		            <Panel ux:Name="firstPanel">
+		                <Placeholder>
+		                    <Panel ux:Name="pointer" Color="#fc9d9a" Width="80%" Height="2">
+		                        <LayoutAnimation>
+		                            <Move X="1" Y="1" RelativeTo="LayoutChange" Duration=".4" Easing="QuadraticInOut" />
+		                        </LayoutAnimation>
+		                    </Panel>
+		                </Placeholder>
+		                <Text TextAlignment="Center">First</Text>
+		                <Clicked>
+		                <Set multiLayout.LayoutElement="firstPanel" />
+		                <Set panelColor.Color="#ffc952" />
+		                <Set text1.Value="First"/>
+		                </Clicked>
+		            </Panel>
+		            <Panel ux:Name="secondPanel">
+		                <Placeholder Target="pointer" />
+		                <Text TextAlignment="Center">Second</Text>
+		                <Clicked>
+		                    <Set multiLayout.LayoutElement="secondPanel" />
+		                    <Set panelColor.Color="#ff7473" />
+		                	<Set text1.Value="Second"/>
+		                </Clicked>
+		            </Panel>
+		            <Panel ux:Name="thirdPanel">
+		                <Placeholder Target="pointer" />
+		                <Text TextAlignment="Center">Third</Text>
+		                <Clicked>
+		                    <Set multiLayout.LayoutElement="thirdPanel" />
+		                    <Set panelColor.Color="#47b8e0"/>
+		            	    <Set text1.Value="Third"/>
+		                </Clicked>
+		            </Panel>
+		        </Grid>
+		    </MultiLayoutPanel>
+		</Panel>
+	</DockPanel>
+</App>

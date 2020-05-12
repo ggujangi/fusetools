@@ -1,0 +1,38 @@
+<App>
+	<StateGroup ux:Name="stateGroup">
+		<State ux:Name="pinkState">
+			<Change panel1.Color="#eb9f9f" Duration="0.2"/>
+		</State>
+		<State ux:Name="littlePinkState">
+			<Change panel1.Color="#f1bbba" Duration="0.2"/>
+		</State>
+		<State ux:Name="whiteState">
+			<Change panel1.Color="#f8ecc9" Duration="0.2"/>
+		</State>
+	</StateGroup>
+
+	<DockPanel>
+		<Grid Columns="1*, 1*, 1*" Dock="Bottom" Margin="5, 10, 5, 10">
+			<Button Text="분홍색">
+				<Clicked>
+					<Set stateGroup.Active="pinkState"/>
+				</Clicked>
+			</Button>
+			<Button Text="연분홍색">
+				<Clicked>
+					<Set stateGroup.Active="littlePinkState"/>
+				</Clicked>
+			</Button>
+			<Button Text="흰색">
+				<Clicked>
+					<Set stateGroup.Active="whiteState"/>
+				</Clicked>
+			</Button>
+		</Grid>
+		<Panel ux:Name="panel1">
+			<Clicked>
+				<TransitionState Type="Next" Target="stateGroup" />
+			</Clicked>
+		</Panel>
+	</DockPanel>
+</App>

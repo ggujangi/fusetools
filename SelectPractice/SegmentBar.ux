@@ -1,0 +1,51 @@
+<Panel ux:Class="SegmentBar" Alignment="VerticalCenter" Height="46" Margin="20">
+	<string ux:Property="Selected"/>
+	<object ux:Property="Options"/>
+
+	<JavaScript>
+		var srcOptions = this.Options.inner();
+
+		var options = srcOptions.map(function(option ,index){
+			return{
+				isFirst : index ===0,
+				isLast: index ===srcOptions.length -1,
+				option:option
+			}
+		});
+
+		var optionCount = options.count();
+
+
+		module.exports = {options, optionCount};
+
+	</JavaScript>
+
+		<Rectangle ux:Class="hongbly.Button">
+			<string ux:Property="Label"/>
+			<Selectable Value="{Property Label}"/>
+			<Text ux:Name="text" Alignment="Center" Value="{Property Label}" Color="#f1bbba"/>
+			<Stroke Color="#f1bbba"/>
+			<WhileTrue Value="{isFirst}">
+				<Change this.CornerRadius="8,0,0,8"/>
+			</WhileTrue>
+			<WhileTrue Value="{isLast}">
+				<Change this.CornerRadius="0,8,8,0"/>
+			</WhileTrue>
+
+			<WhileSelected>
+				<Change text.Color="#f8ecc9" Duration="0.2"/>
+				<Change this.Color="#f1bbba" Duration="0.2"/>
+			</WhileSelected>
+
+			<Tapped>
+				<ToggleSelection/>
+			</Tapped>
+		</Rectangle>
+
+		<Grid ColumnCount="{optionCount}">
+			<Selection Value="{Property Selected}" MaxCount="1" MinCount="1"/>
+			<Each Items="{options}">
+				<hongbly.Button Label ="{option}"/>
+			</Each>
+		</Grid>
+	</Panel>
